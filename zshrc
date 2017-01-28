@@ -22,7 +22,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew git mix git-flow composer pyenv rake-fast python sudo aws debian docker git-extras)
+plugins=(brew git mix git-flow composer pyenv python sudo aws docker)
 
 ##########################################
 # Load External configurationf files
