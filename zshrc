@@ -7,10 +7,6 @@ ZSH=~/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="allanmacgregor"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Set this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -49,6 +45,7 @@ plugins=(brew git mix git-flow composer pyenv rake-fast python sudo aws debian d
 
 source $ZSH/oh-my-zsh.sh
 
+# Load the secrets file
 if [ -e ~/.secrets ]; then
      source ~/.secrets
 fi 
@@ -58,14 +55,14 @@ fi
 ##################
 # Session Variables
 ##################
-export PULSE_LATENCY_MSEC=30
-export EDITOR='vim'
-export HOMEBREW_NO_ANALYTICS=1
-export PATH="~/.composer/vendor/bin:/home/amacgregor/bin:$PATH"
-export PATH="/Users/amacgregor/anaconda/bin:$PATH"
-export GOPATH="/Users/amacgregor/go"
-export PATH=$GOPATH/bin:$PATH
-export PATH="$HOME/.tmuxifier/bin:$PATH"
+##export PULSE_LATENCY_MSEC=30
+##export EDITOR='vim'
+##export HOMEBREW_NO_ANALYTICS=1
+##export PATH="~/.composer/vendor/bin:/home/amacgregor/bin:$PATH"
+##export PATH="/Users/amacgregor/anaconda/bin:$PATH"
+##export GOPATH="/Users/amacgregor/go"
+##export PATH=$GOPATH/bin:$PATH
+##export PATH="$HOME/.tmuxifier/bin:$PATH"
 
 #export DOCKER_HOST=tcp://127.0.0.1:2376
 #export DOCKER_CERT_PATH=/Users/amacgregor/.dinghy/certs
@@ -75,7 +72,6 @@ export PATH="$HOME/.tmuxifier/bin:$PATH"
 #export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 #export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 
-export JEKYLL_ENV=development
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -85,66 +81,6 @@ export JEKYLL_ENV=development
 # else
 #   export EDITOR='mvim'
 # fi
-
-# custom aliases
-alias ske='PULSE_LATENCY_MSEC=30 /usr/bin/skype'
-alias jksrv='jekyll serve --watch --drafts --trace'
-alias ptsleep='pm-suspend'
-alias reload!="source ~/.zshrc"
-# alias docker="sudo docker"
-
-# Phpfarm/Laravel/Magento aliases
-alias spf='/opt/phpfarm/inst/bin/switch-phpfarm'
-alias art="php artisan"
-alias spec="bin/phpspec"
-alias bhat="bin/behat"
-alias composer='php -n -d xdebug.enable=0 /Users/amacgregor/scripts/composer.phar'
-alias spec="bin/phpspec"
-alias bhat="bin/behat"
-
-##################
-# Easier Navigation aliases
-##################
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ~="cd ~" # `cd` is probably faster to type though
-alias -- -="cd -"
-
-##################
-# Utility aliases
-##################
-alias ll="ls -lhA"
-alias svim="sudo vim"
-alias c='pygmentize -O style=monokai -f console256 -g'
-alias history-stat="history | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
-alias tmuxl='tmux list-sessions'
-alias tmuxa='tmux attach'
-
-##################
-# Tmuxifier aliases
-##################
-alias elixir-ide="tmuxifier load-session elixir-ide"
-
-# Git aliases
-#alias gpub = "!git push -u origin $(git branch-name)"
-#alias gunpub = "!git push origin :$(git branch-name)"
-#alias master-cleanse = !"git checkout master && git branch --merged | xargs git branch -d; git branch -r --merged origin/master | sed 's/ *origin\///' | grep -v '^master$' | xargs -I% git push origin :% 2>&1 | grep --colour=never 'deleted'"
-#
-## Git-mainle aliases
-#alias topic-start = '!branch=$1; git checkout master; git pull; git checkout -b "$branch" master'
-#alias topic-pull = '!branch=$(git branch-name); git checkout master; git pull; git checkout "$branch"; git rebase --no-ff master'
-#alias topic-push = '!branch=$(git branch-name); git push -u origin "$branch"'
-
-
-##################
-# Experimental
-##################
-
-#export GPODDER_DOWNLOAD_DIR=/mnt/Media02/Podcasts/
-#export PATH="/usr/local/sbin:$PATH"
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/Users/amacgregor/bin
 
 #if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
 #    source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
@@ -165,7 +101,7 @@ source /Users/amacgregor/Projects/Github/powerline/powerline/bindings/zsh/powerl
 
 
 #export PATH="$(brew --prefix homebrew/php/php54)/bin:$PATH"
-export PATH="/usr/local/bin/npm:$PATH"
+##export PATH="/usr/local/bin/npm:$PATH"
 
 # Make Docker toolbox work 
 #eval "$(docker-machine env default)"
@@ -191,13 +127,22 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 $HOME/.config/base16-shell/base16-tomorrow.dark.sh
 
-NPM_PACKAGES=/Users/amacgregor/.npm-packages
-NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-PATH="$NPM_PACKAGES/bin:$PATH"
+##NPM_PACKAGES=/Users/amacgregor/.npm-packages
+##NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+##PATH="$NPM_PACKAGES/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
+# Load the Variables file
+if [ -e ~/.zsh_files/variables.zsh ]; then
+     source ~/.zsh_files/variables.zsh
+fi 
+
+# Load the Aliases file
+if [ -e ~/.zsh_files/aliases.zsh ]; then
+     source ~/.zsh_files/aliases.zsh
+fi 
 
 #########################
 # Environment setups
