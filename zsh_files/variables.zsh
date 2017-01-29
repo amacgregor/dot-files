@@ -29,11 +29,12 @@ COMPOSERBINPATH="$COMPOSERPATH/vendor/bin"
 NPMBINPATH="$NPM_PACKAGES/bin"
 TMUXIFIERBINPATH="$TMUXIFIERPATH/bin"
 HOMEBIN="$HOME/bin"
+SBINPATH="/usr/local/sbin"
 
 ##########################################
 # Build and Export the PATH 
 ##########################################
-export PATH="$GOBINPATH:$COMPOSERBINPATH:$TMUXIFIERBINPATH:$NPMBINPATH:$HOMEBIN:$PATH"
+export PATH="$GOBINPATH:$COMPOSERBINPATH:$TMUXIFIERBINPATH:$NPMBINPATH:$HOMEBIN:$SBINPATH:$PATH"
 
 
 ##########################################
