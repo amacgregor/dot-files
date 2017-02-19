@@ -48,6 +48,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'BufOnly.vim'
+Plugin 'wesQ3/vim-windowswap'
 
 
 " Elixir Support 
