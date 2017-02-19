@@ -45,6 +45,9 @@ Plugin 'ervandew/supertab'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'BufOnly.vim'
 
 
 " Elixir Support 

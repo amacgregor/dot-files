@@ -59,9 +59,9 @@ if [ -e ~/.zsh_files/functions.zsh ]; then
 fi 
 
 # Load the Powerline Bindings
-if [ -e $POWERLINE_PATH/powerline/bindings/zsh/powerline.zsh ]; then
-     source $POWERLINE_PATH/powerline/bindings/zsh/powerline.zsh
-fi 
+#if [ -e $POWERLINE_PATH/powerline/bindings/zsh/powerline.zsh ]; then
+#     source $POWERLINE_PATH/powerline/bindings/zsh/powerline.zsh
+#fi 
 
 ##########################################
 # Environment setups
@@ -75,6 +75,9 @@ eval "$(rbenv init -)"
 
 # Color Scheme for Ruby // Requires Base16 Shell
 $HOME/.config/base16-shell/base16-tomorrow.dark.sh
+
+
+ELIXIR_VERSION=$(elixir -v | grep -o '\d.\d.\d')
 
 ##########################################
 # Experimental  
