@@ -22,12 +22,11 @@ HIST_STAMPS="mm/dd/yyyy"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew git mix git-flow composer pyenv python sudo aws docker)
+plugins=(brew git mix git-flow composer pyenv python sudo docker)
 
 ##########################################
 # Load External configurationf files
 ##########################################
-
 # Load oh-my-zsh
 if [ -e $ZSH/oh-my-zsh.sh ]; then
      source $ZSH/oh-my-zsh.sh
@@ -58,6 +57,11 @@ if [ -e ~/.zsh_files/functions.zsh ]; then
      source ~/.zsh_files/functions.zsh
 fi 
 
+# Load the Tmuxinator file
+if [ -e ~/.tmuxinator.zsh ]; then
+     source ~/.tmuxinator.zsh
+fi 
+
 # Load the Powerline Bindings
 #if [ -e $POWERLINE_PATH/powerline/bindings/zsh/powerline.zsh ]; then
 #     source $POWERLINE_PATH/powerline/bindings/zsh/powerline.zsh
@@ -76,7 +80,7 @@ eval "$(rbenv init -)"
 # Color Scheme for Ruby // Requires Base16 Shell
 $HOME/.config/base16-shell/base16-tomorrow.dark.sh
 
-
+# Elixir Version information
 ELIXIR_VERSION=$(elixir -v | grep -o '\d.\d.\d')
 
 ##########################################
