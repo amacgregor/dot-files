@@ -17,6 +17,7 @@ NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 ##########################################
 COMPOSERPATH="$HOME/.composer"
 GOPATH="$HOME/go"
+TMUXIFIERPATH="$HOME/.tmuxifier"
 POWERLINE_PATH="$HOME/Projects/Utilities/powerline"
 BASE16_SHELL="$HOME/.config/base16-shell/"
 
@@ -25,6 +26,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 ##########################################
 GOBINPATH="$GOPATH/bin"
 COMPOSERBINPATH="$COMPOSERPATH/vendor/bin"
+TMUXIFIERBINPATH="$TMUXIFIERPATH/bin"
 NPMBINPATH="$NPM_PACKAGES/bin"
 HOMEBIN="$HOME/bin"
 SBINPATH="/usr/local/sbin"
@@ -32,7 +34,7 @@ SBINPATH="/usr/local/sbin"
 ##########################################
 # Build and Export the PATH 
 ##########################################
-export PATH="$GOBINPATH:$COMPOSERBINPATH:$NPMBINPATH:$HOMEBIN:$SBINPATH:$PATH"
+export PATH="$GOBINPATH:$COMPOSERBINPATH:$TMUXIFIERBINPATH:$NPMBINPATH:$HOMEBIN:$SBINPATH:$PATH"
 
 
 ##########################################
