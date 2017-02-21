@@ -31,6 +31,8 @@ NPMBINPATH="$NPM_PACKAGES/bin"
 HOMEBIN="$HOME/bin"
 SBINPATH="/usr/local/sbin"
 
+export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxifier_layouts"
+
 ##########################################
 # Build and Export the PATH 
 ##########################################
