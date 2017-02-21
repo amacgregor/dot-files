@@ -118,6 +118,9 @@ set expandtab
 " Always display the status line
 set laststatus=2
 
+" Enable Elite mode, No ARRRROWWS!!!!
+let g:elite_mode=1
+
 " Theme and Styling 
 set t_Co=256
 set background=dark
@@ -231,6 +234,10 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :TagbarToggle<CR>
 
+" Omnicomplete Better Nav
+inoremap <expr> <c-j> ("\<C-n>")
+inoremap <expr> <c-k> ("\<C-p>")
+
 " Mapping selecting Mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
@@ -258,6 +265,14 @@ nmap <silent> <leader>g :TestVisit<CR>
 autocmd FileType php inoremap <C-p> <ESC>:call pdv#DocumentWithSnip()<CR>i
 autocmd FileType php nnoremap <C-p> :call pdv#DocumentWithSnip()<CR>
 autocmd FileType php setlocal omnifunc=phpcd#CompletePHP
+
+" Disable arrow movement, resize splits instead.
+if get(g:, 'elite_mode')
+	nnoremap <Up>    :resize +2<CR>
+	nnoremap <Down>  :resize -2<CR>
+	nnoremap <Left>  :vertical resize +2<CR>
+	nnoremap <Right> :vertical resize -2<CR>
+endif
 
 map <silent> <LocalLeader>ws :highlight clear ExtraWhitespace<CR>
 
