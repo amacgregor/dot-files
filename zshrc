@@ -76,7 +76,7 @@ eval "$(rbenv init -)"
 $HOME/.config/base16-shell/base16-tomorrow.dark.sh
 
 # Elixir Version information
-ELIXIR_VERSION=$(elixir -v | grep -o '\d.\d.\d')
+ELIXIR_VERSION=$(elixir -v | grep -o 'Elixir \d.\d.\d' | grep -o '\d.\d.\d')
 
 # Tmuxifier Autocomplete
 eval "$(tmuxifier init -)"

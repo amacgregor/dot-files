@@ -28,7 +28,18 @@
 
 CURRENT_BG='NONE'
 SEGMENT_SEPARATOR=''
+LEFT_SEGMENT_SEPARATOR=''
+RIGHT_SEGMENT_SEPARATOR=''
 
+# Load the Functions file
+if [ -e ~/.zsh_files/theme_icons.zsh ]; then
+     source ~/.zsh_files/theme_icons.zsh
+fi 
+
+# Load the Functions file
+if [ -e ~/.zsh_files/git_prompt.zsh ]; then
+     source ~/.zsh_files/git_prompt.zsh
+fi 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
 # rendering default background/foreground.
@@ -38,6 +49,19 @@ prompt_segment() {
   [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
   if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
     echo -n " %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
+  else
+    echo -n "%{$bg%}%{$fg%} "
+  fi
+  CURRENT_BG=$1
+  [[ -n $3 ]] && echo -n $3
+}
+
+prompt_right_segment() {
+  local bg fg
+  [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
+  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
+  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
+    echo -n " %{$bg%F{$CURRENT_BG}%}$RIGHT_SEGMENT_SEPARATOR%{$fg%} "
   else
     echo -n "%{$bg%}%{$fg%} "
   fi
@@ -75,6 +99,16 @@ prompt_end() {
   CURRENT_BG=''
 }
 
+# End the prompt, closing any open segments
+prompt_right_end() {
+  if [[ -n $CURRENT_BG ]]; then
+    echo -n " %{%k%F{$CURRENT_BG}%}"
+  else
+    echo -n "%{%k%}"
+  fi
+  echo -n "%{%f%}"
+  CURRENT_BG=''
+}
 ### Prompt components
 # Each component will draw itself, and hide itself if no information needs to be shown
 
@@ -90,7 +124,9 @@ prompt_git() {
   local ref dirty mode repo_path
   repo_path=$(git rev-parse --git-dir 2>/dev/null)
 
+
   if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+
     dirty=$(parse_git_dirty)
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
     if [[ -n $dirty ]]; then
@@ -118,7 +154,36 @@ prompt_git() {
     zstyle ':vcs_info:*' formats ' %u%c'
     zstyle ':vcs_info:*' actionformats ' %u%c'
     vcs_info
-    echo -n "${ref/refs\/heads\// }${vcs_info_msg_0_%% }${mode}"
+    #echo -n "${icons[VCS_GIT_ICON]}${icons[LEFT_SUBSEGMENT_SEPARATOR]} ${ref/refs\/heads\// }${vcs_info_msg_0_%% }${mode}"
+    echo -n "${ref/refs\/heads\//}${vcs_info_msg_0_%% }${mode}"
+  fi
+}
+
+prompt_git_status() {
+  precmd_update_git_vars
+  if [ -n "$__CURRENT_GIT_STATUS" ]; then
+    STATUS=""
+    if [ "$GIT_CHANGED" -ne "0" ]; then
+      STATUS="$STATUS${icons[VCS_CHANGED_ICON]} $GIT_CHANGED"
+    fi
+    if [ "$GIT_AHEAD" -ne "0" ]; then
+      STATUS="$STATUS${icons[VCS_OUTGOING_CHANGES_ICON]}$GIT_AHEAD"
+    fi
+    if [ "$GIT_BEHIND" -ne "0" ]; then
+      STATUS="$STATUS${icons[VCS_INCOMING_CHANGES_ICON]}$GIT_BEHIND"
+    fi
+    if [ "$GIT_STAGED" -ne "0" ]; then
+      STATUS="$STATUS${icons[VCS_STAGED_ICON]} $GIT_STAGED"
+    fi
+    if [ "$GIT_UNTRACKED" -ne "0" ]; then
+      STATUS="$STATUS${icons[VCS_UNTRACKED_ICON]} $GIT_UNTRACKED"
+    fi
+
+    # Show the git Icon indicator
+    prompt_segment white black 
+    echo -n "${icons[VCS_GIT_ICON]}"
+    prompt_segment black default 
+    echo -n "${STATUS}"
   fi
 }
 
@@ -173,7 +238,7 @@ prompt_virtualenv() {
 
 prompt_elixir() {
  if [ -f "$PWD/mix.exs" ]; then
-   prompt_segment 098 white "(`echo $ELIXIR_VERSION`)"
+   prompt_segment 098 white "`echo ${icons[ELIXIR_ICON]} $ELIXIR_VERSION`"
  fi
 }
 
@@ -202,9 +267,11 @@ build_prompt() {
 }
 
 build_right_prompt() {
-  prompt_status
-  prompt_context
+  prompt_git_status
   prompt_elixir
+  prompt_status
+  #prompt_context
+  prompt_right_end
 }
 
 PROMPT='%{%f%b%k%}$(build_prompt) '
