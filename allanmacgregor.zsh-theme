@@ -162,28 +162,23 @@ prompt_git() {
 prompt_git_status() {
   precmd_update_git_vars
   if [ -n "$__CURRENT_GIT_STATUS" ]; then
-    STATUS=""
+    # Show the git Icon indicator
+    prompt_segment white black "${icons[VCS_GIT_ICON]}"
     if [ "$GIT_CHANGED" -ne "0" ]; then
-      STATUS="$STATUS${icons[VCS_CHANGED_ICON]} $GIT_CHANGED"
+      prompt_segment black yellow "${icons[VCS_CHANGED_ICON]} $GIT_CHANGED"
     fi
     if [ "$GIT_AHEAD" -ne "0" ]; then
-      STATUS="$STATUS${icons[VCS_OUTGOING_CHANGES_ICON]}$GIT_AHEAD"
+      prompt_segment black 025 "${icons[VCS_OUTGOING_CHANGES_ICON]}$GIT_AHEAD"
     fi
     if [ "$GIT_BEHIND" -ne "0" ]; then
-      STATUS="$STATUS${icons[VCS_INCOMING_CHANGES_ICON]}$GIT_BEHIND"
+      prompt_segment black 016 "${icons[VCS_INCOMING_CHANGES_ICON]}$GIT_BEHIND"
     fi
     if [ "$GIT_STAGED" -ne "0" ]; then
-      STATUS="$STATUS${icons[VCS_STAGED_ICON]} $GIT_STAGED"
+      prompt_segment black green "${icons[VCS_STAGED_ICON]} $GIT_STAGED"
     fi
     if [ "$GIT_UNTRACKED" -ne "0" ]; then
-      STATUS="$STATUS${icons[VCS_UNTRACKED_ICON]} $GIT_UNTRACKED"
+      prompt_segment black red "${icons[VCS_UNTRACKED_ICON]} $GIT_UNTRACKED"
     fi
-
-    # Show the git Icon indicator
-    prompt_segment white black 
-    echo -n "${icons[VCS_GIT_ICON]}"
-    prompt_segment black default 
-    echo -n "${STATUS}"
   fi
 }
 
