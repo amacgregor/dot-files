@@ -42,9 +42,18 @@ alias tmuxa='tmux attach'
 alias elixir-ide="tmuxifier load-session elixir-ide"
 
 ##########################################
+# Git  
+##########################################
+alias gpristine='git reset --hard && git clean -dfx'
+
+##########################################
+# Elixir/Erlang 
+##########################################
+alias miex='iex -S mix'
+
+##########################################
 # Experimental
 ##########################################
-
 # Git aliases
 #alias gpub = "!git push -u origin $(git branch-name)"
 #alias gunpub = "!git push origin :$(git branch-name)"
