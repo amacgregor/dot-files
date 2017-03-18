@@ -121,6 +121,9 @@ set laststatus=2
 " Enable Elite mode, No ARRRROWWS!!!!
 let g:elite_mode=1
 
+" Enable highlighting of the current line
+set cursorline
+
 " Theme and Styling 
 set t_Co=256
 set background=dark
