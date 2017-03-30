@@ -39,6 +39,7 @@ Plugin 'Townk/vim-autoclose'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tobyS/vmustache'
 Plugin 'janko-m/vim-test'
+Plugin 'maksimr/vim-jsbeautify'
 
 " Markdown / Writting
 Plugin 'reedes/vim-pencil'

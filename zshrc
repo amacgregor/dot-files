@@ -1,4 +1,4 @@
-##########################################
+#########################################
 # Allan MacGregor's ZSH configuration 
 ##########################################
 
@@ -88,5 +88,10 @@ eval "$(tmuxifier init -)"
 # OPAM configuration
 #. /home/amacgregor/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+# Motivation reminder
+echo "2017 12 31" | awk '{dt=mktime($0 " 00 00 00")-systime(); print "There are " int(dt/86400/7) " weeks left until the year ends. What will you do?";}'
+
 # Run Fortune on a new terminal
 #fortune quotes 
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
