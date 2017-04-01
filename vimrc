@@ -31,6 +31,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'benmills/vimux'
 Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'gilsondev/searchtasks.vim'
 
 " Generic Programming Support 
 Plugin 'jakedouglas/exuberant-ctags'
@@ -40,6 +41,8 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tobyS/vmustache'
 Plugin 'janko-m/vim-test'
 Plugin 'maksimr/vim-jsbeautify'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'neomake/neomake'
 
 " Markdown / Writting
 Plugin 'reedes/vim-pencil'
@@ -137,6 +140,22 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='hybrid'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1 
+
+" Syntastic Configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_enable_elixir_checker = 1
+" let g:syntastic_elixir_checkers = ["elixir"]
+
+" Neomake settings
+autocmd! BufWritePost * Neomake
+let g:neomake_elixir_enabled_makers = ['mix', 'credo', 'dogma']
 
 " Vim-PDV Configuration 
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
