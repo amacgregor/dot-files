@@ -32,6 +32,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'benmills/vimux'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'gilsondev/searchtasks.vim'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'tpope/vim-dispatch'
 
 " Generic Programming Support 
 Plugin 'jakedouglas/exuberant-ctags'
@@ -54,7 +56,7 @@ Plugin 'LanguageTool'
 Plugin 'kablamo/vim-git-log'
 Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-fugitive'
-Plugin 'jaxbot/github-issues.vim'
+"Plugin 'jaxbot/github-issues.vim'
 
 " PHP Support
 Plugin 'phpvim/phpcd.vim'
@@ -81,6 +83,7 @@ Plugin 'jadercorrea/elixir_generator.vim'
 Plugin 'lambdatoast/elm.vim'
 
 " Theme / Interface
+Plugin 'AnsiEsc.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -171,6 +174,7 @@ let g:github_access_token = "e6fb845bd306a3ca7f086cef82732d1d5d9ac8e0"
 
 " Vim-Alchemist Configuration
 let g:alchemist#elixir_erlang_src = "/Users/amacgregor/Projects/Github/alchemist-source"
+let g:alchemist_tag_disable = 1
 
 " Vim-Supertab Configuration
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
@@ -195,6 +199,57 @@ let g:UltiSnipsEditSplit="vertical" " If you want :UltiSnipsEdit to split your w
 
 " Vim-Test Configuration
 let test#strategy = "vimux"
+
+" Neocomplete Settings
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " Elixir Tagbar Configuration
 let g:tagbar_type_elixir = {
@@ -260,6 +315,21 @@ map <C-m> :TagbarToggle<CR>
 " Omnicomplete Better Nav
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
+
+" Neocomplete Plugin mappins
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
 " Mapping selecting Mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
