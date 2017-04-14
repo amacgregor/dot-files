@@ -100,6 +100,9 @@ Plugin 'w0ng/vim-hybrid'
 Plugin 'AlessandroYorba/Sierra'
 Plugin 'daylerees/colour-schemes'
 Plugin 'effkay/argonaut.vim'
+Plugin 'ajh17/Spacegray.vim'
+Plugin 'atelierbram/Base2Tone-vim'
+Plugin 'colepeters/spacemacs-theme.vim'
 
 " OSX stupid backspace fix
 set backspace=indent,eol,start
@@ -134,8 +137,17 @@ set cursorline
 " Theme and Styling 
 set t_Co=256
 set background=dark
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-default-dark
+colorscheme spacegray
+" colorscheme spacemacs-theme
+ 
+let g:spacegray_underline_search = 1
+let g:spacegray_italicize_comments = 1
 
 " Vim-Airline Configuration
 let g:airline#extensions#tabline#enabled = 1
