@@ -1,9 +1,6 @@
 """""""""""""""""""""""""""""""""""""
 " Allan MacGregor Vimrc configuration 
 """""""""""""""""""""""""""""""""""""
-set nocompatible
-syntax on
-set nowrap
 set encoding=utf8
 
 """" START Vundle Configuration 
@@ -104,9 +101,6 @@ Plugin 'ajh17/Spacegray.vim'
 Plugin 'atelierbram/Base2Tone-vim'
 Plugin 'colepeters/spacemacs-theme.vim'
 
-" OSX stupid backspace fix
-set backspace=indent,eol,start
-
 call vundle#end()            " required
 filetype plugin indent on    " required
 """" END Vundle Configuration 
@@ -114,10 +108,13 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""
 " Configuration Section
 """""""""""""""""""""""""""""""""""""
+set nowrap
+
+" OSX stupid backspace fix
+set backspace=indent,eol,start
 
 " Show linenumbers
 set number
-set ruler
 
 " Set Proper Tabs
 set tabstop=4
@@ -135,16 +132,15 @@ let g:elite_mode=1
 set cursorline
 
 " Theme and Styling 
+syntax on
 set t_Co=256
-set background=dark
 
-if (has("termguicolors"))
-  set termguicolors
-endif
+" if (has("termguicolors"))
+"   set termguicolors
+" endif
 
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme spacegray
-" colorscheme spacemacs-theme
  
 let g:spacegray_underline_search = 1
 let g:spacegray_italicize_comments = 1
