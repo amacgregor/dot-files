@@ -73,7 +73,7 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 eval "$(rbenv init -)"
 
 # Color Scheme for Ruby // Requires Base16 Shell
-$HOME/.config/base16-shell/base16-tomorrow.dark.sh
+#$HOME/.config/base16-shell/base16-tomorrow.dark.sh
 
 # Elixir Version information
 ELIXIR_VERSION=$(elixir -v | grep -o 'Elixir \d.\d.\d' | grep -o '\d.\d.\d')

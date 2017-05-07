@@ -177,9 +177,6 @@ augroup markdown
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 augroup END
 
-" Github Issues Configuration
-let g:github_access_token = "e6fb845bd306a3ca7f086cef82732d1d5d9ac8e0"
-
 " Vim-Alchemist Configuration
 let g:alchemist#elixir_erlang_src = "/Users/amacgregor/Projects/Github/alchemist-source"
 let g:alchemist_tag_disable = 1
