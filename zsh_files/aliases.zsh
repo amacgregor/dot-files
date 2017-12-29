@@ -34,6 +34,7 @@ alias svim="sudo vim"
 alias c='pygmentize -O style=monokai -f console256 -g'
 alias history-stat="history | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
 alias go_write="cd ~/Projects/Writing"
+#alias pyenv='CFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv'
 
 ##########################################
 # Tmux/Tmuxifier
@@ -65,4 +66,9 @@ alias miex='iex -S mix'
 #alias topic-pull = '!branch=$(git branch-name); git checkout master; git pull; git checkout "$branch"; git rebase --no-ff master'
 #alias topic-push = '!branch=$(git branch-name); git push -u origin "$branch"'
 
-
+# all in one homebrew, gem update commands
+alias brewup='brew update && brew upgrade && brew cleanup && brew linkapps'
+alias gemup='gem update --system && gem update && gem cleanup'
+alias npmup='npm -g cache clean && npm -g update && npm-check-updates -u && npm install'
+alias sysup='sudo softwareupdate -i -a'
+alias upall='sysup && brewup && gemup && npmup'
