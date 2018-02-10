@@ -33,7 +33,11 @@ alias ll="ls -lhA"
 alias svim="sudo vim"
 alias c='pygmentize -O style=monokai -f console256 -g'
 alias history-stat="history | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
-alias go_write="cd ~/Projects/Writing"
+alias go_write="cd /Volumes/Workspace/Writing"
+alias go_work="cd /Volumes/Workspace/Work"
+alias go_workspace="cd /Volumes/Workspace"
+alias go_browze="cd /Volumes/Workspace/Work/Clients/DailyGrabs"
+
 #alias pyenv='CFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv'
 
 ##########################################
