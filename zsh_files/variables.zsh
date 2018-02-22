@@ -5,7 +5,7 @@ export PULSE_LATENCY_MSEC=30
 export EDITOR='vim'
 export HOMEBREW_NO_ANALYTICS=1
 export JEKYLL_ENV=development
-export HOMEBREW_GITHUB_API_TOKEN='90d02569c7b45e7a8656bf3c0b90a10fc6d00b8f'
+export HOMEBREW_GITHUB_API_TOKEN='2d384750b0b6a3104cc458dc67b7d0c359891d3f'
 
 ##########################################
 # NPM Varialbes
