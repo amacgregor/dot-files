@@ -229,6 +229,56 @@ prompt_virtualenv() {
   fi
 }
 
+# Virtualenv: current working virtualenv
+prompt_pyenv() {
+ if [ -f "$PWD/.python-version" ]; then
+   prompt_segment 098 white "`echo ${icons[ELIXIR_ICON]} $version_pyenv test`"
+ fi
+}
+
+prompt_elixir() {
+ if [ -f "$PWD/mix.exs" ]; then
+   prompt_segment 098 white "`echo ${icons[ELIXIR_ICON]} $ELIXIR_VERSION`"
+ fi
+}
+
+# Status:
+# - was there an error
+# - am I root
+# - are there background jobs?
+prompt_status() {
+  local symbols
+  symbols=()
+  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
+  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
+
+  [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
+}
+
+## Main prompt
+build_prompt() {
+  RETVAL=$?
+  prompt_status
+  prompt_pyenv
+  prompt_virtualenv
+  prompt_dir
+  prompt_git
+  prompt_hg
+  prompt_end
+}
+
+build_right_prompt() {
+  prompt_git_status
+  prompt_elixir
+  prompt_status
+  #prompt_context
+  prompt_right_end
+}
+
+PROMPT='%{%f%b%k%}$(build_prompt) '
+RPROMPT='%{%f%b%k%}$(build_right_prompt)'
+
 prompt_elixir() {
  if [ -f "$PWD/mix.exs" ]; then
    prompt_segment 098 white "`echo ${icons[ELIXIR_ICON]} $ELIXIR_VERSION`"

@@ -5,7 +5,7 @@ export PULSE_LATENCY_MSEC=30
 export EDITOR='vim'
 export HOMEBREW_NO_ANALYTICS=1
 export JEKYLL_ENV=development
-export HOMEBREW_GITHUB_API_TOKEN='2d384750b0b6a3104cc458dc67b7d0c359891d3f'
+export HOMEBREW_GITHUB_API_TOKEN='63e5f4042a2aa2dcea490645fde49451dc9a84fa'
 
 ##########################################
 # NPM Varialbes
@@ -22,6 +22,7 @@ TMUXIFIERPATH="$HOME/.tmuxifier"
 POWERLINE_PATH="$HOME/Projects/Utilities/powerline"
 BASE16_SHELL="$HOME/.config/base16-shell/"
 MIX_PATH="$HOME/.mix/"
+PYENV_ROOT="$HOME/.pyenv"
 
 ##########################################
 # Setting up the Bin Paths
@@ -32,13 +33,20 @@ TMUXIFIERBINPATH="$TMUXIFIERPATH/bin"
 NPMBINPATH="$NPM_PACKAGES/bin"
 HOMEBIN="$HOME/bin"
 SBINPATH="/usr/local/sbin"
+PYENVPATH="$PYENV_ROOT/bin"
 
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxifier_layouts"
 
 ##########################################
 # Build and Export the PATH 
 ##########################################
-export PATH="$GOBINPATH:$MIX_PATH:$COMPOSERBINPATH:$TMUXIFIERBINPATH:$NPMBINPATH:$HOMEBIN:$SBINPATH:$PATH"
+export PATH="$PYENVPATH:$GOBINPATH:$MIX_PATH:$COMPOSERBINPATH:$TMUXIFIERBINPATH:$NPMBINPATH:$HOMEBIN:$SBINPATH:$PATH"
+
+
+
+##########################################
+# Tiny Care Terminal 
+##########################################
 
 
 ##########################################

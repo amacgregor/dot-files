@@ -25,18 +25,20 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
+alias to=". gotodir"
 
 ##########################################
 # Utility aliases
 ##########################################
-alias ll="ls -lhA"
+#alias ll="ls -lhA"
+alias ll="exa -bghHliS --git"
 alias svim="sudo vim"
 alias c='pygmentize -O style=monokai -f console256 -g'
 alias history-stat="history | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
-alias go_write="cd /Volumes/Workspace/Writing"
-alias go_work="cd /Volumes/Workspace/Work"
-alias go_workspace="cd /Volumes/Workspace"
-alias go_browze="cd /Volumes/Workspace/Work/Clients/DailyGrabs"
+#alias go_write="cd /Volumes/Workspace/Writing"
+#alias go_work="cd /Volumes/Workspace/Work"
+#alias go_workspace="cd /Volumes/Workspace"
+#alias go_browze="cd /Volumes/Workspace/Work/Clients/DailyGrabs"
 
 #alias pyenv='CFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv'
 
@@ -71,7 +73,7 @@ alias miex='iex -S mix'
 #alias topic-push = '!branch=$(git branch-name); git push -u origin "$branch"'
 
 # all in one homebrew, gem update commands
-alias brewup='brew update && brew upgrade && brew cleanup && brew linkapps'
+alias brewup='brew update && brew upgrade && brew cleanup'
 alias gemup='gem update --system && gem update && gem cleanup'
 alias npmup='npm -g cache clean && npm -g update && npm-check-updates -u && npm install'
 alias sysup='sudo softwareupdate -i -a'

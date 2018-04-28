@@ -4,7 +4,7 @@
 # A: finds the absolute path, even if this is symlinked
 # h: equivalent to dirname
 export __GIT_PROMPT_DIR=${0:A:h}
-export __GIT_PROMPT_DIR="/Users/amacgregor/Projects/Utilities/zsh-git-prompt/"
+export __GIT_PROMPT_DIR="/Volumes/Workspace/Utilities/zsh-git-prompt/"
 
 export GIT_PROMPT_EXECUTABLE=${GIT_PROMPT_EXECUTABLE:-"haskell"}
 
