@@ -5,7 +5,6 @@ export PULSE_LATENCY_MSEC=30
 export EDITOR='vim'
 export HOMEBREW_NO_ANALYTICS=1
 export JEKYLL_ENV=development
-export HOMEBREW_GITHUB_API_TOKEN='63e5f4042a2aa2dcea490645fde49451dc9a84fa'
 
 ##########################################
 # NPM Varialbes
@@ -41,13 +40,6 @@ export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxifier_layouts"
 # Build and Export the PATH 
 ##########################################
 export PATH="$PYENVPATH:$GOBINPATH:$MIX_PATH:$COMPOSERBINPATH:$TMUXIFIERBINPATH:$NPMBINPATH:$HOMEBIN:$SBINPATH:$PATH"
-
-
-
-##########################################
-# Tiny Care Terminal 
-##########################################
-
 
 ##########################################
 # Experimental
