@@ -33,13 +33,14 @@ NPMBINPATH="$NPM_PACKAGES/bin"
 HOMEBIN="$HOME/bin"
 SBINPATH="/usr/local/sbin"
 PYENVPATH="$PYENV_ROOT/bin"
+UTILPATH="/Volumes/Workspace/bin"
 
 export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxifier_layouts"
 
 ##########################################
 # Build and Export the PATH 
 ##########################################
-export PATH="$PYENVPATH:$GOBINPATH:$MIX_PATH:$COMPOSERBINPATH:$TMUXIFIERBINPATH:$NPMBINPATH:$HOMEBIN:$SBINPATH:$PATH"
+export PATH="$UTILPATH:$PYENVPATH:$GOBINPATH:$MIX_PATH:$COMPOSERBINPATH:$TMUXIFIERBINPATH:$NPMBINPATH:$HOMEBIN:$SBINPATH:$PATH"
 
 ##########################################
 # Experimental

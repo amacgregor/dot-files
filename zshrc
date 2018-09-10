@@ -84,9 +84,6 @@ ELIXIR_VERSION=$(elixir -v | grep -o 'Elixir \d.\d.\d' | grep -o '\d.\d.\d')
 # Tmuxifier Autocomplete
 eval "$(tmuxifier init -)"
 
-# Add Path to local installs 
-export PATH=$PATH:/Volumes/Workspace/bin
-
 ##########################################
 # Experimental  
 ##########################################
