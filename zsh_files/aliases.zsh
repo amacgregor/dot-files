@@ -37,7 +37,6 @@ alias history-stat="history | awk '{print \$2}' | sort | uniq -c | sort -n -r | 
 alias please='sudo $(fc -ln -1)'
 
 
-
 ##########################################
 # Deprecated
 ##########################################

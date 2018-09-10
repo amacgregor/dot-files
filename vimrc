@@ -33,6 +33,7 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'jceb/vim-orgmode'
 Plugin 'tpope/vim-speeddating'
+Plugin 'calorie/vim-typing-sound'
 
 " Generic Programming Support 
 Plugin 'jakedouglas/exuberant-ctags'
@@ -58,7 +59,7 @@ Plugin 'tpope/vim-fugitive'
 "Plugin 'jaxbot/github-issues.vim'
 
 " PHP Support
-Plugin 'phpvim/phpcd.vim'
+"Plugin 'phpvim/phpcd.vim'
 Plugin 'tobyS/pdv'
 
 " Erlang Support
@@ -104,6 +105,7 @@ Plugin 'ajh17/Spacegray.vim'
 Plugin 'atelierbram/Base2Tone-vim'
 Plugin 'colepeters/spacemacs-theme.vim'
 Plugin 'dylanaraps/wal.vim'
+Plugin 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 " Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 
@@ -149,9 +151,13 @@ set t_Co=256
 "   set termguicolors
 " endif
 
-let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme spacegray
-"colorscheme wal
+let g:vim_typing_sound = 0                  " sound off
+let g:vim_typing_sound_command = 'afplay' " or 'afplay'
+let g:vim_typing_sound_path = '/Volumes/Workspace/Utilities/Sound/9744__horn__typewriter.wav'            " set your sound path
+
+"let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme challenger_deep
+let g:challenger_deep_termcolors = 256
 
 let g:spacegray_underline_search = 1
 let g:spacegray_italicize_comments = 1

@@ -75,11 +75,17 @@ eval "$(rbenv init -)"
 # Color Scheme for Ruby // Requires Base16 Shell
 #$HOME/.config/base16-shell/base16-tomorrow.dark.sh
 
+# Kiex Elixir version manager setup
+test -s "~/.kiex/scripts/kiex" && source "~/.kiex/scripts/kiex"
+
 # Elixir Version information
 ELIXIR_VERSION=$(elixir -v | grep -o 'Elixir \d.\d.\d' | grep -o '\d.\d.\d')
 
 # Tmuxifier Autocomplete
 eval "$(tmuxifier init -)"
+
+# Add Path to local installs 
+export PATH=$PATH:/Volumes/Workspace/bin
 
 ##########################################
 # Experimental  
