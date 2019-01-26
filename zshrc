@@ -2,12 +2,29 @@
 # Allan MacGregor's ZSH configuration 
 ##########################################
 
-# Path to your oh-my-zsh configuration.
-ZSH=~/.oh-my-zsh
+# Load Zgen Plugin Manager
+source "${HOME}/.zgen/zgen.zsh"
 
-# Set name of the theme to load.
-ZSH_THEME="allanmacgregor"
+# Load oh-my-zsh plugins 
+if ! zgen saved; then
 
+  # Plugins
+  zgen oh-my-zsh
+  zgen oh-my-zsh plugins/brew
+  zgen oh-my-zsh plugins/wakatime
+  zgen oh-my-zsh plugins/git
+  zgen oh-my-zsh plugins/mix
+
+  # generate the init script from plugins above
+  zgen save
+fi
+
+## Path to your oh-my-zsh configuration.
+#ZSH=~/.oh-my-zsh
+#
+## Set name of the theme to load.
+#ZSH_THEME="allanmacgregor"
+#
 # Uncomment following line if you want to disable autosetting terminal title.
 DISABLE_AUTO_TITLE="true"
 
@@ -19,28 +36,24 @@ COMPLETION_WAITING_DOTS="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="mm/dd/yyyy"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(gpg-agent brew pyenv git mix git-flow composer sudo docker wakatime)
-
-##########################################
-# Load External configurationf files
-##########################################
-# Load oh-my-zsh
-if [ -e $ZSH/oh-my-zsh.sh ]; then
-     source $ZSH/oh-my-zsh.sh
-fi 
+## Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+## Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+## Example format: plugins=(rails git textmate ruby lighthouse)
+#plugins=(gpg-agent brew pyenv git mix git-flow composer sudo docker wakatime)
+#
+###########################################
+## Load External configurationf files
+###########################################
 
 # Load the secrets file
 if [ -e ~/.secrets ]; then
      source ~/.secrets
 fi 
 
-# Load the FZF completion
-if [ -e ~/.fzf.zsh ]; then
-     source ~/.fzf.zsh
-fi 
+## Load the FZF completion
+#if [ -e ~/.fzf.zsh ]; then
+#     source ~/.fzf.zsh
+#fi 
 
 # Load the Variables file
 if [ -e ~/.zsh_files/variables.zsh ]; then
@@ -52,80 +65,61 @@ if [ -e ~/.zsh_files/aliases.zsh ]; then
      source ~/.zsh_files/aliases.zsh
 fi 
 
-# Load the TinyCareTerminal file
-if [ -e ~/.zsh_files/tct.zsh ]; then
-     source ~/.zsh_files/tct.zsh
-fi 
-
 # Load the Functions file
 if [ -e ~/.zsh_files/functions.zsh ]; then
      source ~/.zsh_files/functions.zsh
 fi 
 
-# Add the following to your shell init to set up gpg-agent automatically for every shell
-#if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
-#    source ~/.gnupg/.gpg-agent-info
-#    export GPG_AGENT_INFO
-#else
-#    eval $(gpg-agent --daemon  ~/.gnupg/.gpg-agent-info)
-#fi
-
-
-# Load the Powerline Bindings
-#if [ -e $POWERLINE_PATH/powerline/bindings/zsh/powerline.zsh ]; then
-#     source $POWERLINE_PATH/powerline/bindings/zsh/powerline.zsh
-#fi 
-
-##########################################
-# Environment setups
-##########################################
-
-# Python with PyEnv setup
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
-# Ruby with RbEnv setup
-eval "$(rbenv init -)"
-
-# Color Scheme for Ruby // Requires Base16 Shell
-#$HOME/.config/base16-shell/base16-tomorrow.dark.sh
+###########################################
+## Environment setups
+###########################################
+#
+## Python with PyEnv setup
+#if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+#
+## Ruby with RbEnv setup
+#eval "$(rbenv init -)"
+#
+## Color Scheme for Ruby // Requires Base16 Shell
+##$HOME/.config/base16-shell/base16-tomorrow.dark.sh
 
 # Elixir Version information
 ELIXIR_VERSION=$(elixir -v | grep -o 'Elixir \d.\d.\d' | grep -o '\d.\d.\d')
 
-# Tmuxifier Autocomplete
-eval "$(tmuxifier init -)"
-
-# Requierd for gpg support on commits
-export GPG_TTY="$(tty)"
+## Tmuxifier Autocomplete
+#eval "$(tmuxifier init -)"
+#
+## Requierd for gpg support on commits
+#export GPG_TTY="$(tty)"
 
 # PHPBrew support 
 source /Users/amacgregor/.phpbrew/bashrc
 
-##########################################
-# Experimental  
-##########################################
+###########################################
+## Experimental  
+###########################################
 
 # OPAM configuration
 #. /home/amacgregor/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-# Motivation reminder
-echo "2019 12 31" | awk '{dt=mktime($0 " 00 00 00")-systime(); print "There are " int(dt/86400/7) " weeks left until the year ends. What will you do?";}'
+## Motivation reminder
+#echo "2019 12 31" | awk '{dt=mktime($0 " 00 00 00")-systime(); print "There are " int(dt/86400/7) " weeks left until the year ends. What will you do?";}'
+#
+## Run Fortune on a new terminal
+##fortune quotes 
 
-# Run Fortune on a new terminal
-#fortune quotes 
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# begin gotodir completion
-. <(gotodir --completion)
-# end gotodir completion
-
-# begin gotodir completion
-. <(gotodir --completion)
-# end gotodir completion
-
-. $HOME/.asdf/asdf.sh
-
-. $HOME/.asdf/completions/asdf.bash
+## begin gotodir completion
+#. <(gotodir --completion)
+## end gotodir completion
+#
+## begin gotodir completion
+#. <(gotodir --completion)
+## end gotodir completion
+#
+#. $HOME/.asdf/asdf.sh
+#
+#. $HOME/.asdf/completions/asdf.bash
