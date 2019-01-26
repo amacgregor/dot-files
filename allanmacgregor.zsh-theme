@@ -27,8 +27,10 @@
 # A few utility functions to make it easy and re-usable to draw segmented prompts
 
 CURRENT_BG='NONE'
-SEGMENT_SEPARATOR=''
-LEFT_SEGMENT_SEPARATOR=''
+#SEGMENT_SEPARATOR='\uE0CC'
+SEGMENT_SEPARATOR='\uE0CC'
+LEFT_SEGMENT_SEPARATOR='\uE0d2'
+#LEFT_SEGMENT_SEPARATOR=''
 RIGHT_SEGMENT_SEPARATOR=''
 
 # Load the Functions file
@@ -91,7 +93,7 @@ get_short_path() {
 # End the prompt, closing any open segments
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
-    echo -n " %{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+    echo -n " %{%k%F{$CURRENT_BG}%}$LEFT_SEGMENT_SEPARATOR"
   else
     echo -n "%{%k%}"
   fi
@@ -161,9 +163,10 @@ prompt_git_status() {
   precmd_update_git_vars
   if [ -n "$__CURRENT_GIT_STATUS" ]; then
     # Show the git Icon indicator
-    prompt_segment 255 black "${icons[VCS_GIT_ICON]}"
+    echo -n "%F{255}\ue0b6"
+    prompt_right_segment 255 black "${icons[VCS_GIT_ICON]}"
     if [ "$GIT_CHANGED" -ne "0" ]; then
-      prompt_segment yellow 255 "${icons[VCS_CHANGED_ICON]} $GIT_CHANGED"
+      prompt_segment 214 255 "${icons[VCS_CHANGED_ICON]} $GIT_CHANGED"
     fi
     if [ "$GIT_AHEAD" -ne "0" ]; then
       prompt_segment 027 255 "${icons[VCS_OUTGOING_CHANGES_ICON]}$GIT_AHEAD"
@@ -172,7 +175,7 @@ prompt_git_status() {
       prompt_segment magenta 255 "${icons[VCS_INCOMING_CHANGES_ICON]}$GIT_BEHIND"
     fi
     if [ "$GIT_STAGED" -ne "0" ]; then
-      prompt_segment green 255 "${icons[VCS_STAGED_ICON]} $GIT_STAGED"
+      prompt_segment 042 255 "${icons[VCS_STAGED_ICON]} $GIT_STAGED"
     fi
     if [ "$GIT_UNTRACKED" -ne "0" ]; then
       prompt_segment 009 255 "${icons[VCS_UNTRACKED_ICON]} $GIT_UNTRACKED"
@@ -276,23 +279,26 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
+prompt_system() {
+    prompt_segment white black "`echo ${icons[MACOS_ICON]}`"
+}
+
 ## Main prompt
 build_prompt() {
   RETVAL=$?
+  prompt_system
+  prompt_elixir
   prompt_virtualenv
   prompt_dir
   prompt_git
-  prompt_hg
   prompt_end
 }
 
 build_right_prompt() {
   prompt_git_status
-  prompt_elixir
-  prompt_status
-  #prompt_context
+#  prompt_status
   prompt_right_end
 }
 
 PROMPT='%{%f%b%k%}$(build_prompt) '
-RPROMPT='%{%f%b%k%}$(build_right_prompt)'
+RPROMPT='%B%K%{%f%b%k%}$(build_right_prompt)'

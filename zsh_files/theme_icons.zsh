@@ -60,6 +60,7 @@ icons=(
       LOCK_ICON                      $'\UE138'              # 
       EXECUTION_TIME_ICON            $'\uF253'
       SSH_ICON                       '(ssh)'
+      MACOS_ICON                     $'\ue711'
     )
 
 
