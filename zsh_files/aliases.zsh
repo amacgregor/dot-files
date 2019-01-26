@@ -25,7 +25,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
-alias to=". gotodir"
+#alias to=". gotodir"
 
 ##########################################
 # Utility aliases

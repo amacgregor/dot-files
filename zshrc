@@ -11,9 +11,11 @@ if ! zgen saved; then
   # Plugins
   zgen oh-my-zsh
   zgen oh-my-zsh plugins/brew
-  zgen oh-my-zsh plugins/wakatime
   zgen oh-my-zsh plugins/git
   zgen oh-my-zsh plugins/mix
+
+  zgen load sobolevn/wakatime-zsh-plugin
+  zgen load /Users/amacgregor/Dotfiles/allanmacgregor.zsh-theme
 
   # generate the init script from plugins above
   zgen save
@@ -75,7 +77,7 @@ fi
 ###########################################
 #
 ## Python with PyEnv setup
-#if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 #
 ## Ruby with RbEnv setup
 #eval "$(rbenv init -)"
@@ -108,18 +110,19 @@ source /Users/amacgregor/.phpbrew/bashrc
 ## Run Fortune on a new terminal
 ##fortune quotes 
 
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Optimized nvm loading
+export NVM_DIR="$HOME/.nvm"
+nvm_load () {
+  . $NVM_DIR/nvm.sh
+  . $NVM_DIR/bash_completion
+  . <(gotodir --completion)
+}
 
-## begin gotodir completion
-#. <(gotodir --completion)
-## end gotodir completion
-#
-## begin gotodir completion
-#. <(gotodir --completion)
-## end gotodir completion
-#
-#. $HOME/.asdf/asdf.sh
-#
-#. $HOME/.asdf/completions/asdf.bash
+# Force aliases for nvm, node and npm
+alias node='unalias nvm; unalias node; unalias npm; nvm_load; node $@'
+alias npm='unalias nvm; unalias node; unalias npm; nvm_load; npm $@'
+alias nvm='unalias nvm; unalias node; unalias npm; nvm_load; nvm $@'
+alias to='nvm_load; . gotodir $@'
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
