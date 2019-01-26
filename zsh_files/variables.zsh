@@ -22,6 +22,7 @@ POWERLINE_PATH="$HOME/Projects/Utilities/powerline"
 BASE16_SHELL="$HOME/.config/base16-shell/"
 MIX_PATH="$HOME/.mix/"
 PYENV_ROOT="$HOME/.pyenv"
+BISON_PATH="/usr/local/opt/bison/bin"
 
 ##########################################
 # Setting up the Bin Paths
@@ -40,7 +41,7 @@ export TMUXIFIER_LAYOUT_PATH="$HOME/.tmuxifier_layouts"
 ##########################################
 # Build and Export the PATH 
 ##########################################
-export PATH="$UTILPATH:$PYENVPATH:$GOBINPATH:$MIX_PATH:$COMPOSERBINPATH:$TMUXIFIERBINPATH:$NPMBINPATH:$HOMEBIN:$SBINPATH:$PATH"
+export PATH="$BISON_PATH:$UTILPATH:$PYENVPATH:$GOBINPATH:$MIX_PATH:$COMPOSERBINPATH:$TMUXIFIERBINPATH:$NPMBINPATH:$HOMEBIN:$SBINPATH:$PATH"
 
 ##########################################
 # Experimental

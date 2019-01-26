@@ -1,0 +1,12 @@
+LOG: 2018-11-10T08:36:03-05:00: Slacker Init
+-
+LOG: API: couldn't add message to channel history, channel does not exist undefined
+-
+LOG: { type: 'hello' }
+-
+LOG: API: Fetching channel history for C0257SZ5S
+-
+LOG: API: Fetching channel history for C0257SZ5S
+-
+LOG: MessagesList: Attempt to mark channel C0257SZ5S read
+-

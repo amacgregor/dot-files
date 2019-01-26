@@ -36,7 +36,6 @@ alias c='pygmentize -O style=monokai -f console256 -g'
 alias history-stat="history | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
 alias please='sudo $(fc -ln -1)'
 
-
 ##########################################
 # Deprecated
 ##########################################

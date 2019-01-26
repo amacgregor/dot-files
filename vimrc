@@ -16,6 +16,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Utility
+Plugin 'wakatime/vim-wakatime'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'ervandew/supertab'

@@ -1,6 +1,12 @@
 # dot-files
 Dotfiles repository
 
+## Command line tools 
+
+### Window manager 
+#### byobu
+#### tmux 
+
 ## Vim - Reference
 
 ### Utilities
