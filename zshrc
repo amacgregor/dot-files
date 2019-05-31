@@ -94,6 +94,8 @@ ELIXIR_VERSION=$(elixir -v | grep -o 'Elixir \d.\d.\d' | grep -o '\d.\d.\d')
 ## Requierd for gpg support on commits
 #export GPG_TTY="$(tty)"
 
+export HOMEBREW_GITHUB_API_TOKEN=75b18c0f158dd334c5690ad9bbc2dfc3c68cc8b7
+
 # PHPBrew support 
 source /Users/amacgregor/.phpbrew/bashrc
 

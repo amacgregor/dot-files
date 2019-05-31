@@ -35,6 +35,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'jceb/vim-orgmode'
 Plugin 'tpope/vim-speeddating'
 Plugin 'calorie/vim-typing-sound'
+Plugin 'https://github.com/Alok/notational-fzf-vim'
 
 " Generic Programming Support 
 Plugin 'jakedouglas/exuberant-ctags'
@@ -130,6 +131,10 @@ set tabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
+
+" Notational fzf config
+let g:nv_search_paths = ['/Volumes/Workspace/Writing', 'docs.md' , './notes.md']
+
 
 " Always display the status line
 set laststatus=2

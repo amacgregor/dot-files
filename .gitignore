@@ -1,1 +1,6 @@
 vim/bundles/*
+.DS_Store
+node_modules/
+.elixir_ls
+.idea/
+
